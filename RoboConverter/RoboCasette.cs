@@ -1,6 +1,3 @@
-using System.Data;
-using System.Reflection;
-
 class RoboCasette {
     public RoboCasette(OsuMap map){
         timingpoints = TimingConverter.CovnertTiming(map);
