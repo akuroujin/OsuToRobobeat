@@ -39,8 +39,9 @@ class OsuMap{
             line = sr.ReadLine();
             string[] data = line.Split(',');
             if(data.Length < 6) continue;
-            if(data[6] == "0") continue;            
-            timingpoints.Add(new TimingPoint(int.Parse(data[0]), double.Parse(data[1])));
+            if(data[6] == "0") continue;  
+            string offset = data[0].Split('.')[0];          
+            timingpoints.Add(new TimingPoint(int.Parse(offset), double.Parse(data[1])));
         }
 
         line = sr.ReadLine();

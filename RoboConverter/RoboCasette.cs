@@ -34,7 +34,7 @@ class RoboCasette {
         sw.WriteLine("\"BPM\": 0");
         sw.WriteLine("},");
         sw.WriteLine("\"Beat\": {");
-        sw.WriteLine($"\"StartTime\": {firstObjectTime},");
+        sw.WriteLine($"\"StartTime\": 0,");
         sw.WriteLine($"\"EndTime\": {lastObjectTime},");
         sw.WriteLine($"\"NumberOfBeats\": {timingpoints.Count},");
         sw.WriteLine("\"Beats\": [");
@@ -48,9 +48,9 @@ class RoboCasette {
         sw.WriteLine("\"Visuals\": {");
         sw.WriteLine("\"CassetteTextureInternalName\": \"PASSAGE1\",");
         sw.WriteLine("\"CassetteColor\": {");
-        sw.WriteLine("\"r\": 0.8,");
+        sw.WriteLine("\"r\": 0.7,");
         sw.WriteLine("\"g\": 0.4,");
-        sw.WriteLine("\"b\": 0.4,");
+        sw.WriteLine("\"b\": 0.8,");
         sw.WriteLine("\"a\": 1.0");
         sw.WriteLine("},");
         sw.WriteLine("\"CasetteStrength\": 1.25,");

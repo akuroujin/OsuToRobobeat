@@ -7,8 +7,6 @@
         Console.WriteLine("Input path to osu beatmap: ");
 
 
-
-
         string osuPath = "";
         while(!File.Exists(osuPath)){
             osuPath = Console.ReadLine();
