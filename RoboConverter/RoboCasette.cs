@@ -6,7 +6,6 @@ class RoboCasette {
         id = map.id;
         estimatedEnd = (map.lastObjectTime/1000.0) + 10;
         lastObjectTime = map.lastObjectTime/1000.0;
-        firstObjectTime = (map.firstObjectTime/1000.0) - 1;
     }
     public List<double> timingpoints;
     public List<double> GetTimingPoints(){
@@ -16,7 +15,6 @@ class RoboCasette {
     public string artist{get;private set;}
     public string id { get; private set; }
     public double estimatedEnd { get; private set; }
-    private double firstObjectTime;
     private double lastObjectTime;
 
     public void WriteToFile(string path){

@@ -10,7 +10,6 @@ class OsuMap{
     public string id { get; private set; }    
     public string title { get; private set; }
     public string artist { get; private set; }
-    public int firstObjectTime { get; private set; }
     public int lastObjectTime { get; private set; }
 
 
@@ -25,7 +24,7 @@ class OsuMap{
         while(line != "[Metadata]" && !sr.EndOfStream){
             line = sr.ReadLine();
         }
-        
+
         while(line != "[TimingPoints]" && !sr.EndOfStream){
             line = sr.ReadLine();
             if(line == "") continue;
@@ -45,7 +44,6 @@ class OsuMap{
         }
 
         line = sr.ReadLine();
-        firstObjectTime = int.Parse(line.Split(',')[2]);
         while(!sr.EndOfStream) {
             line = sr.ReadLine();
         }
