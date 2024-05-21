@@ -28,6 +28,7 @@ class OsuMap{
         while(line != "[TimingPoints]" && !sr.EndOfStream){
             line = sr.ReadLine();
             if(line == "") continue;
+            line = line.Replace('?', ' ');
             string[] data = line.Split(':');
             if(data[0] == "BeatMapID") id = data[1]; 
             if(data[0] == "Title") title = data[1]; 

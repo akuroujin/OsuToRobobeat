@@ -9,6 +9,7 @@ class RoboPack{
 
         if(!File.Exists("./osuExport/audio.mp3")){
             string song = SongSelector();
+            song = song.Replace('?', ' ');
             string fileFormat = song.Split('.')[1];
             File.Copy( song, $"./roboPack/{casette.title}.{fileFormat}");
         }
