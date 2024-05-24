@@ -11,10 +11,11 @@ class RoboPack{
             string song = SongSelector();
             song = song.Replace('?', ' ');
             string fileFormat = song.Split('.')[1];
-            File.Copy( song, $"./roboPack/{casette.title}.{fileFormat}");
+            fileFormat = fileFormat;
+            File.Copy( song, $"./roboPack/{casette.id}.{fileFormat}");
         }
         else
-            File.Copy("./osuExport/audio.mp3", $"./roboPack/{casette.title}.mp3");
+            File.Copy("./osuExport/audio.mp3", $"./roboPack/{casette.id}.mp3");
         
         if(File.Exists(path + casette.title + ".robobeat")) File.Delete(path + casette.title + ".robobeat");
 
@@ -43,9 +44,10 @@ class RoboPack{
         while(selection < 0 || selection > audioList.Length){
             Console.Write("Selection: ");     
             if(!int.TryParse(Console.ReadLine(), out selection)) continue; 
+            
         }
-
-        return audioList[selection];
+        
+        return audioList[selection-1];
     }
 }
 

@@ -23,9 +23,9 @@ class RoboCasette {
         sw.WriteLine("\"File\": {");
         sw.WriteLine($"\"InternalName\": \"{id}\",");
         sw.WriteLine("\"Info\": {");
-        sw.WriteLine("\"PathToAudioClip\": \"imported/from/osu\",");
+        sw.WriteLine($"\"PathToAudioClip\": \"imported/from/osu/{title}.mp3\",");
         sw.WriteLine("\"InStorage\": true,");
-        sw.WriteLine($"\"FileName\": \"{id}.mp3\",");
+        sw.WriteLine($"\"FileName\": \"{title}.mp3\",");
         sw.WriteLine($"\"LengthOfClip\": {estimatedEnd},");
         sw.WriteLine($"\"PublicName\": \"{title}\",");
         sw.WriteLine($"\"ArtistName\": \"{artist}\",");

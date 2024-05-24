@@ -24,7 +24,7 @@ public static class OsuUnpack{
         }
         Console.Write("Selection: ");        
         int selection = -1;
-
+        
         while(selection < 0 || selection > difficulty.Length){
             selection = int.Parse(Console.ReadLine())-1;
         }

@@ -1,24 +1,20 @@
-using System.Reflection;
-
 class OsuMap{
 
     private StreamReader sr;
     public OsuMap(string path)
     {
-        ReadFromFile(path);
+        ReadFromTiming(path);
     }
     public string id { get; private set; }    
     public string title { get; private set; }
     public string artist { get; private set; }
     public int lastObjectTime { get; private set; }
-
-
     private List<TimingPoint> timingpoints = new List<TimingPoint>();
     public List<TimingPoint> GetTimingPoints(){
         return timingpoints;
     }
 
-    private void ReadFromFile(string path){
+    private void ReadFromTiming(string path){
         sr = new StreamReader(path);
         string line = "";
         while(line != "[Metadata]" && !sr.EndOfStream){
@@ -30,7 +26,7 @@ class OsuMap{
             if(line == "") continue;
             line = line.Replace('?', ' ');
             string[] data = line.Split(':');
-            if(data[0] == "BeatMapID") id = data[1]; 
+            if(data[0] == "BeatmapID") id = data[1]; 
             if(data[0] == "Title") title = data[1]; 
             if(data[0] == "Artist") artist = data[1];             
         }
