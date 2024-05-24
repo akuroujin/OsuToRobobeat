@@ -25,6 +25,8 @@ class OsuMap{
             line = sr.ReadLine();
             if(line == "") continue;
             line = line.Replace('?', ' ');
+            line = line.Replace("*", "");
+            line = line.Replace('!', ' ');
             string[] data = line.Split(':');
             if(data[0] == "BeatmapID") id = data[1]; 
             if(data[0] == "Title") title = data[1]; 

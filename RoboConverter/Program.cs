@@ -20,7 +20,8 @@
         while(!Directory.Exists(roboPath)){
             Console.WriteLine("Input export folder: ");
             roboPath = Console.ReadLine();
-            if(osuPath[osuPath.Length-1] != '\\') roboPath += '\\';
+            if(osuPath[osuPath.Length-1] != '/' || osuPath[osuPath.Length-1] != '\\') roboPath += '/';
+            Console.WriteLine("Export folder: " + roboPath);
         }
         
         
@@ -28,6 +29,6 @@
 
         Console.WriteLine("Complete!");
         Console.WriteLine("Press any key to exit...");
-        Console.Read();
+        Console.ReadKey();
     }
 }
