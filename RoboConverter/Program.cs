@@ -4,17 +4,25 @@
     {
         Console.WriteLine("osu! to RoboCasette Converter V0.1 (prepare for issues!)");
         Console.WriteLine("Made by: @Akuroujin");
-        Console.WriteLine("Input path to osu beatmap: ");
+        
 
 
         string osuPath = "";
-        while(!File.Exists(osuPath)){
+        while(!File.Exists(osuPath) ){
+            Console.WriteLine("Input path to .osz file:");
             osuPath = Console.ReadLine();
+            if(osuPath.Contains('.') && osuPath.Split('.')[1] != "osz"){
+                continue;
+            }
         }    
 
-        Console.WriteLine("Input export folder: ");
-
-        string roboPath = Console.ReadLine();
+        string roboPath= "";
+        while(!Directory.Exists(roboPath)){
+            Console.WriteLine("Input export folder: ");
+            roboPath = Console.ReadLine();
+            if(osuPath[osuPath.Length-1] != '\\') roboPath += '\\';
+        }
+        
         
         OsuUnpack.Unpack(osuPath, roboPath);   
 
