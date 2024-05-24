@@ -1,3 +1,5 @@
+using System.Globalization;
+
 class RoboCasette {
     public RoboCasette(OsuMap map){
         timingpoints = TimingConverter.CovnertTiming(map);
@@ -7,6 +9,7 @@ class RoboCasette {
         estimatedEnd = (map.lastObjectTime/1000.0) + 10;
         lastObjectTime = map.lastObjectTime/1000.0;
     }
+    private NumberFormatInfo nfi = new NumberFormatInfo { NumberDecimalSeparator = "." };
     public List<double> timingpoints;
     public List<double> GetTimingPoints(){
         return timingpoints;
@@ -33,11 +36,11 @@ class RoboCasette {
         sw.WriteLine("},");
         sw.WriteLine("\"Beat\": {");
         sw.WriteLine($"\"StartTime\": 0,");
-        sw.WriteLine($"\"EndTime\": {lastObjectTime},");
+        sw.WriteLine($"\"EndTime\": {lastObjectTime.ToString("F", nfi)},");
         sw.WriteLine($"\"NumberOfBeats\": {timingpoints.Count},");
         sw.WriteLine("\"Beats\": [");
         for(int i = 0; i < timingpoints.Count; i++){
-            sw.Write("{0}", timingpoints[i]);
+            sw.Write("{0}", timingpoints[i].ToString("F", nfi));
             if(i != timingpoints.Count - 1) sw.WriteLine(","); 
             else sw.WriteLine("");
         }

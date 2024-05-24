@@ -43,8 +43,7 @@ class RoboPack{
 
         while(selection < 0 || selection > audioList.Length){
             Console.Write("Selection: ");     
-            if(!int.TryParse(Console.ReadLine(), out selection)) continue; 
-            
+            if(!int.TryParse(Console.ReadLine(), out selection)) continue;            
         }
         
         return audioList[selection-1];
