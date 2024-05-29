@@ -2,7 +2,7 @@
 {
     private static void Main(string[] args)
     {
-        Console.WriteLine("osu! to RoboCasette Converter V0.1 (prepare for issues!)");
+        Console.WriteLine("osu! to RoboCasette Converter V0.2 (prepare for issues!)");
         Console.WriteLine("Made by: @Akuroujin");
         
 
