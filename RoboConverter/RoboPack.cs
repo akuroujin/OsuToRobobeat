@@ -13,7 +13,7 @@ class RoboPack{
             song = song.Replace('?', ' ');
             song = song.Replace("*", " ");
             song = song.Replace('!', ' ');
-            string fileFormat = song.Split('.')[1];
+            string fileFormat = song.Split('.')[2];
             //fileFormat = fileFormat; - the funny line
             File.Copy( song, $"./roboPack/{casette.id}.{fileFormat}");
         }
