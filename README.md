@@ -13,7 +13,7 @@ Still has lots of issues to be fixed.
 ### Steps to build
 - Open the source folder in terminal
 - Type `dotnet build -c Release`
-After these you should be able to run the executable inside `./RoboConverter/bin/release/net7.0/`
+- After these you should be able to run the executable inside`./RoboConverter/bin/release/net7.0/`
 
 ## Usage
 Input the path to the .osz file (which is the exported/downloaded version of the osu file) and follow the instructions in the terminal. 
