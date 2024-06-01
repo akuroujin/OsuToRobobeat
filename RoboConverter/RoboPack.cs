@@ -4,7 +4,8 @@ static class RoboPack{
     private const string exportPath = "./roboPack";
     private const string osuExport = "./osuExport";
 
-    public static void Pack(string path, RoboCasette casette){
+    public static void Pack(string path, OsuMap map){
+        RoboCasette casette = new RoboCasette(map);
         if(Directory.Exists(exportPath)) Directory.Delete("./roboPack", true);
         Directory.CreateDirectory(exportPath);
         casette.WriteToFile($"{exportPath}/[{casette.title}].cassette");
@@ -38,6 +39,9 @@ static class RoboPack{
 
         ZipFile.CreateFromDirectory(exportPath, path + casette.title + ".robobeat");
 
+    }
+
+    public static void Clean(){
         Directory.Delete(exportPath, true);
     }
 }

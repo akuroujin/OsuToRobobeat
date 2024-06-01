@@ -2,7 +2,7 @@ using System.IO.Compression;
 
 public static class OsuUnpack{
     private const string exportPath = "./osuExport";
-    public static void Unpack(string path, string to){
+    internal static OsuMap Unpack(string path){
         
         if(path[path.Length-1] == '/' || !path.Contains('.'))
             path = FileSelector.ListFiles("osz", path);
@@ -11,7 +11,7 @@ public static class OsuUnpack{
             Console.ForegroundColor = ConsoleColor.Red;
             System.Console.WriteLine("No osu! files found in the folder.");
             Console.ForegroundColor = ConsoleColor.White;
-            return;  
+            return null;  
         }
       
 
@@ -21,12 +21,15 @@ public static class OsuUnpack{
         
         string difficulty = FileSelector.ListFiles("osu", exportPath);
         if(difficulty == null)
-            return;
+            return null;
         
         OsuMap map = new OsuMap(difficulty);
-        RoboCasette casette = new RoboCasette(map);
 
-        RoboPack.Pack(to, casette);
+
+        
+        return map;
+    }
+    public static void Clean(){
         Directory.Delete(exportPath, true);
     }
 }
