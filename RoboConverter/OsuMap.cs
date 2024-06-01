@@ -27,6 +27,7 @@ class OsuMap{
             line = line.Replace('?', ' ');
             line = line.Replace("*", "");
             line = line.Replace('!', ' ');
+            line = line.Trim();
             string[] data = line.Split(':');
             if(data[0] == "BeatmapID") id = data[1]; 
             if(data[0] == "Title") title = data[1]; 
@@ -49,4 +50,8 @@ class OsuMap{
         lastObjectTime = int.Parse(line.Split(',')[2]);
         sr.Close();
     }        
+
+    private void ReadFromMap(){
+
+    }
 }

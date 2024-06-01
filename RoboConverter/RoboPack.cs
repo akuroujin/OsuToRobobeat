@@ -1,55 +1,44 @@
 using System.IO.Compression;
 
-class RoboPack{   
+static class RoboPack{   
+    private const string exportPath = "./roboPack";
+    private const string osuExport = "./osuExport";
 
     public static void Pack(string path, RoboCasette casette){
-        if(Directory.Exists("./roboPack")) Directory.Delete("./roboPack", true);
-        Directory.CreateDirectory("./roboPack");
-        casette.WriteToFile($"./roboPack/[{casette.title}].cassette");
+        if(Directory.Exists(exportPath)) Directory.Delete("./roboPack", true);
+        Directory.CreateDirectory(exportPath);
+        casette.WriteToFile($"{exportPath}/[{casette.title}].cassette");
 
-        if(!File.Exists("./osuExport/audio.mp3")){
-            string song = SongSelector();
-            
-            song = song.Replace('?', ' ');
-            song = song.Replace("*", " ");
-            song = song.Replace('!', ' ');
-            string fileFormat = song.Split('.')[2];
-            //fileFormat = fileFormat; - the funny line
-            File.Copy( song, $"./roboPack/{casette.id}.{fileFormat}");
+        string song;
+        string fileFormat = "mp3";
+        song =  FileSelector.ListFiles("mp3", osuExport);
+
+        if(song == null){
+            song =  FileSelector.ListFiles("ogg", osuExport);
+            fileFormat = "ogg";
         }
-        else
-            File.Copy("./osuExport/audio.mp3", $"./roboPack/{casette.id}.mp3");
+            
+        if(song == null){
+            song =  FileSelector.ListFiles("wav", osuExport);
+            fileFormat = ".wav";
+        }
+
+        if(song == null){
+            Console.ForegroundColor = ConsoleColor.Red;
+            System.Console.WriteLine("No usable audio files found...");
+            Console.ForegroundColor = ConsoleColor.White;
+            return;
+        }
+
+        //fileFormat = fileFormat; - the funny line
+
+        File.Copy( song, $"{exportPath}/{casette.id}.{fileFormat}");
         
         if(File.Exists(path + casette.title + ".robobeat")) File.Delete(path + casette.title + ".robobeat");
 
-        ZipFile.CreateFromDirectory("./roboPack", path + casette.title + ".robobeat");
+        ZipFile.CreateFromDirectory(exportPath, path + casette.title + ".robobeat");
 
-        Directory.Delete("./roboPack", true);
-    }
-    
-
-    private static string SongSelector(){
-        string[] audioList = Directory.GetFiles("./osuExport", "*.mp3");
-        if (audioList.Length == 0)
-        {
-            audioList = Directory.GetFiles("./osuExport", "*.ogg");
-        }
-        if (audioList.Length == 0){
-            audioList = Directory.GetFiles("./osuExport", "*.wav");
-        }
-        Console.WriteLine("Select Song to Convert");
-        for (int i = 0; i < audioList.Length; i++)        {
-            Console.WriteLine($"{i+1}. - {audioList[i]}");
-        }
-        
-        int selection = -1;
-
-        while(selection < 0 || selection > audioList.Length){
-            Console.Write("Selection: ");     
-            if(!int.TryParse(Console.ReadLine(), out selection)) continue;            
-        }
-        
-        return audioList[selection-1];
+        Directory.Delete(exportPath, true);
     }
 }
 

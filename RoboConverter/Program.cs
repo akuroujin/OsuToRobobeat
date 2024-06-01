@@ -8,11 +8,11 @@
 
 
         string osuPath = "";
-        while(!File.Exists(osuPath) ){
-            Console.WriteLine("Input path to .osz file:");
+        while(!File.Exists(osuPath) && !Directory.Exists(osuPath)){
+            Console.WriteLine("Input folder or path to .osz file:");
             osuPath = Console.ReadLine();
-            if(osuPath.Contains('.') && osuPath.Split('.')[1] != "osz"){
-                continue;
+            if(!Directory.Exists(osuPath) && File.Exists(osuPath)){
+                continue;            
             }
         }    
 
