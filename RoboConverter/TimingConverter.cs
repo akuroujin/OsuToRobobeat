@@ -1,7 +1,16 @@
 static class TimingConverter{
     private static List<double> beats = new List<double>();
+
+    public static List<double> ConvertOffset(OsuMap map){
+        for (int i = 0; i < map.GetObjects().Count; i++)
+        {
+            double offset = map.GetObjects()[i].offset/1000.0;
+            beats.Add(offset);
+        }
+        return beats;
+    }
     public static List<double> CovnertTiming(OsuMap map){
-        const double delay = 0.075; //Weird delay that gets added after importing
+        const double delay = 0.073; //Weird delay that gets added after importing
         double startOffset;
         for (int i = 0; i < map.GetTimingPoints().Count; i++)
         {

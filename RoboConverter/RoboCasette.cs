@@ -2,7 +2,10 @@ using System.Globalization;
 
 class RoboCasette {
     public RoboCasette(OsuMap map){
-        timingpoints = TimingConverter.CovnertTiming(map);
+        if(map.fromMap)
+            timingpoints = TimingConverter.ConvertOffset(map);
+        else
+            timingpoints = TimingConverter.CovnertTiming(map);
         title = map.title;
         artist = map.artist;
         id = map.id;

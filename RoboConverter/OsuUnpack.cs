@@ -2,7 +2,7 @@ using System.IO.Compression;
 
 public static class OsuUnpack{
     private const string exportPath = "./osuExport";
-    internal static OsuMap Unpack(string path){
+    internal static OsuMap Unpack(string path, bool fromMap){
         
         if(path[path.Length-1] == '/' || !path.Contains('.'))
             path = FileSelector.ListFiles("osz", path);
@@ -23,7 +23,7 @@ public static class OsuUnpack{
         if(difficulty == null)
             return null;
         
-        OsuMap map = new OsuMap(difficulty);
+        OsuMap map = new OsuMap(difficulty, fromMap);
 
 
         
