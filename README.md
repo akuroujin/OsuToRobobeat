@@ -1,7 +1,6 @@
 # OsuToRobobeat
-This is a small converter, currently only converts the **timings** of osu beatmaps.
-
-Still has lots of issues to be fixed.
+Small converter to convert the osu! maps into cassettes for robobeat.
+Can convert both BPMs and the maps themselves!
 
 ## Prerequisites 
 - Dotnet 7 runtime
@@ -16,5 +15,5 @@ Still has lots of issues to be fixed.
 - After these you should be able to run the executable inside`./RoboConverter/bin/release/net7.0/`
 
 ## Usage
-Input the path to the .osz file (which is the exported/downloaded version of the osu file) and follow the instructions in the terminal. 
+Locate and input the path to the folder containing the .osz file, or the file itself and follow the instructions in the terminal. 
 
