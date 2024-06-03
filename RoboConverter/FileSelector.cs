@@ -1,5 +1,7 @@
 static class FileSelector{
     public static string ListFiles(string type, string path){
+        if(!Directory.Exists(path))   
+            return null;
         string[] files = Directory.GetFiles(path, "*." + type);
 
         if(files.Length == 0){
