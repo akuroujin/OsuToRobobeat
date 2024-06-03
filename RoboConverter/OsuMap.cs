@@ -98,7 +98,7 @@ class OsuMap{
         while(!sr.EndOfStream) {
             line = sr.ReadLine();
             string[] data = line.Split(',');
-            if(data[3] == objects[objects.Count-1].offset.ToString()) continue;
+            if(objects.Count > 0 && data[3] == objects[objects.Count-1].offset.ToString()) continue;
             if(data[3] == "1" || data[3] == "4"|| data[3] == "5")  {
                 objects.Add(new OsuCircle(int.Parse(data[2])));
             }
